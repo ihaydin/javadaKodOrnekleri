@@ -1,0 +1,60 @@
+import java.util.Scanner;
+	public class ismailHakkiAydinSoru3 {
+ 
+		public static void main(String[] args) {
+			Scanner iha=new Scanner(System.in);
+			String ilkCumle,sonCumle;
+			
+			System.out.print("Enter a string: ");
+			//Kullanıcan cümle girilmesi istendi.
+			ilkCumle=iha.nextLine();
+			//Harflerin hepsi büyük degere atandı.
+			ilkCumle=ilkCumle.toUpperCase();  
+			//Cümle içindeki bosluklar kaldırıldı.
+			sonCumle=ilkCumle.replaceAll(" ", "");
+			System.out.println("Number of occurrences of the letters in the string:");
+			//Metodla birlikta işlemler main metoda cagrıldı ve ekrana yazıdırıldı.
+			cumleSirasinaGore(sonCumle);
+		}
+		//Harflerin cümle içindeki sırasına göre sıralama yapmak için metod olusturuldu.
+		public static void cumleSirasinaGore(String sonCumle){
+			//Değişkenler tanımladı.
+			int i,j,k,index,adet=0; 
+			//Char tipinde kendime göre Char dizisi olusturuldu.
+			char[] iso;
+			//Char tanımlandı.
+			iso=new char[sonCumle.length()];
+			//Cümlenin indexleri cümle uzunlugu boyunca incelendi.
+			for(index=0; index<sonCumle.length(); index++){
+				iso[index]=sonCumle.charAt(index);
+			}
+			//İndexler dizi içerisine alındı.
+			for(i=0; i<index; i++){
+				char ch=iso[i];
+			//İndexler incelendi.	
+            for(j=i+1; j<index; j++){
+                if(iso[j]==ch){
+                	//İndexler karşılastırıldı.
+                    for(k=j; k<(index-1); k++)
+                    	iso[k]=iso[k+1];
+                    index--;
+                    j=i;
+                }
+            }
+        }
+			//Harf adetleri bulma işlemi.
+        //Dizi içerisine alınan indexler sırasıyla cümle boyunca her harfi için sırayla incelendi.
+			int[] iso1=new int[index];
+			for(i=0; i<index; i++){
+				for(j=0,adet=0; j<sonCumle.length(); j++){
+					if(iso[i]==sonCumle.charAt(j))
+						adet++;//Karsılastırdıgımız harflerin aynı olan degerleri buldugunda adedi kadar arttırıldı.
+            }
+				//Diziye topladıgımız harflerin adetleri sırasıyla atandı.
+				iso1[i]=adet;
+				//Harf ve ne kadar adet olduğu ekrana yazdırıldı.
+				System.out.println(iso[i]+" : "+adet);
+        }
+    }
+	
+}
