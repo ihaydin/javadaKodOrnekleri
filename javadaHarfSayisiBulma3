@@ -1,0 +1,39 @@
+import java.util.Scanner;
+ 
+	public class ismailHakkiAydinSoru1 {
+		//Alfabetik sıralama yapmak için ayrı bir metod olusturuldu.
+		public static void alfabetikSirala(String sonCumle){
+			//Girilecek olan cümle için ilk önce dizi tanımlandı.
+			int[] cumleDizi = new int[100];
+	        //Döngüyle birlikte cümle içindeki harfleri sıralama işlemi.
+	        for(int i=0; i<sonCumle.length(); i++)
+	        {
+	        	//Cümle içindeki harf adetlerini A dan baslatarak cümle içerisindeki bir sonraki harfe geçildi.
+	            cumleDizi[sonCumle.charAt(i)-'A']++;
+	        }
+	         //Döngü ile beraber harflerin adetleri bulundu.
+	        for(int i = 0; i<100; i++)
+	            if(cumleDizi[i]!=0)
+	            	//Alfabetik sıraya göre harfler sıralandı ve adetleri yazdırıldı.
+	                System.out.println((char)('A'+i)+" : "+cumleDizi[i]);
+			
+		}
+		
+			public static void main(String[] arg){
+		        Scanner iha=new Scanner(System.in);
+		        
+		        String ilkCumle,sonCumle;
+		        System.out.print("Enter a string: ");
+		        ilkCumle=iha.nextLine();
+		        //Cümle içerisindeki harflerin büyük küçük duyarlılığı ortadan kaldırıldı.
+		        ilkCumle=ilkCumle.toUpperCase();  
+		        //Cümle içerisindeki bosluklar kaldırıldı.
+		        sonCumle=ilkCumle.replaceAll(" ", "");
+		        		
+		        //Ve Alfabetik sıralamanın bulundugu metod main in içine cagrıldı ve ekrana yazdırılma işlemi tamamlandı
+		        System.out.println("Number of occurrences of the letters in the string: ");
+		        alfabetikSirala(sonCumle);
+		        }
+	
+	
+}
