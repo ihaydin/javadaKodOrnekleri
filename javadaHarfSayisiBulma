@@ -1,0 +1,69 @@
+import java.util.Arrays;
+import java.util.Scanner;
+ 
+ 
+public class ismailHakkiAydinSoru2 {
+ 
+	public static void main(String[] args) {
+		
+		Scanner iha = new Scanner (System.in) ;
+	 
+		System.out.print("Enter a String: ");
+		String cumle = iha.nextLine().toUpperCase();
+		System.out.println("Number of occurrences of the letters in the string:");
+		maxSirala(cumle);
+		
+		}
+ 
+	public static void maxSirala(String cumle){
+		
+		//Harflerden olusan char dizisi belirlendi
+				char[] dizi = {'A','B','C','Ç','D','E','F','G','Ğ','H','I','İ','J','K',
+					 'L','M','N','O','Ö','P','Q','R','S','Ş','T','U','Ü','V','W','X','Y','Z'};
+			 
+				int[] adet = new int [dizi.length];
+			 
+				//Girilen cümle boyunca harfler kontrol edildi.
+				for (int i=0; i<dizi.length; i++) {
+					for (int j=0; j<cumle.length(); j++){
+						if (cumle.charAt(j)==dizi[i]){
+							adet [i] = adet[i]+1;
+						}
+					}
+				
+				}
+				//Maksimum değerler için değişkenler tanımlandı.
+					int degisken=1;
+					int j=0;
+					int a;
+					char ihaa;
+					//Döngü içerisinde kontrol edildi.
+					while (degisken==1) {
+						degisken=0;
+						j++;
+						
+						//Charlar kontrol edilerek max. bulma işlemi tamamlandı.
+						for (int i = 0; i < adet.length - j; i++) {
+							if (adet[i] < adet[i+1]) {
+								a = adet[i];
+								adet[i] = adet[i+1];
+								adet[i+1] = a;
+								ihaa = dizi[i];
+								dizi[i] = dizi[i+1];
+								dizi[i+1] = ihaa;
+								degisken=1;
+							}
+						}
+					}
+					
+					//Cümle uzunluğu boyunca harfler ve adetleri ekrana yazdırıldı.
+						for (int i = 0; i < dizi.length; i++) {
+							//İf içerisinde adetler kontrol edilerek 0 dan büyükse döngüye girildi.
+							if (adet[i]!=0) {
+								System.out.println(dizi[i]+" : "+adet[i]); // burdada artık harfleri sayısıyla beraber yazdırıyoruz
+							}
+				
+						}
+		
+	}
+}
